@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Assets/CSS/style.css" />
+    <title>WeatherMe</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <input
+          type="text"
+          class="search"
+          placeholder="Search for a city..."
+          autocomplete="off"
+        />
+        <div class="selector">
+          <select id="units">
+            <option value="metric">Metric</option>
+            <option value="imperial">Imperial</option>
+          </select>
+          <select id="language">
+            <option value="en">English</option>
+            <option value="mk">Македонски</option>
+          </select>
+        </div>
+      </header>
+      <main>
+        <section class="location">
+          <div class="city"></div>
+          <div class="date"></div>
+        </section>
+        <div class="current">
+          <div class="temp"><span></span></div>
+          <div class="weather"></div>
+          <div class="hi-low"></div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./Assets/JS/main.js"></script>
+  </body>
+</html>
