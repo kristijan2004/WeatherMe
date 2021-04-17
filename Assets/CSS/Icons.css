@@ -1,0 +1,30 @@
+.element {
+  height: 90px;
+  width: 90px;
+  margin: 10px;
+}
+
+.container {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);
+}
+
+.elements {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.white {
+  fill: #ffffff;
+}
+.gray {
+  fill: #e0e0e0;
+}
+.yellow {
+  fill: #ffeb3b;
+}
