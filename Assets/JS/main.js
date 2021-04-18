@@ -12,7 +12,14 @@ search.addEventListener("keypress", findCity);
 
 function findCity(e) {
   if (e.keyCode === 13) {
-    getResult(search.value, units.value, language.value);
+    if (search.value !== "") {
+      getResult(search.value, units.value, language.value);
+    } else {
+      document.querySelector(".validName").style.opacity = "0.6";
+      setTimeout(() => {
+        document.querySelector(".validName").style.opacity = "0";
+      }, 3000);
+    }
   }
 }
 function getResult(city, units, language) {
