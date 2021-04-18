@@ -1,19 +1,24 @@
-const search = document.querySelector(".search");
-const units = document.getElementById("units");
-const language = document.getElementById("language");
+let search = document.querySelector(".search");
+// const units = document.getElementById("units");
+let units = "metric";
+// const language = document.getElementById("language");
+let language = "en";
+let btn = document.querySelectorAll(".btn");
+let input = document.querySelectorAll(".langBtn");
 
 let snow = document.querySelector(".snow");
 let thunder = document.querySelector(".thunder");
 let rain = document.querySelector(".rain");
 let sun = document.querySelector(".sun");
 let cloud = document.querySelector(".cloud");
+let moon = document.querySelector(".moon");
 
 search.addEventListener("keypress", findCity);
 
 function findCity(e) {
   if (e.keyCode === 13) {
     if (search.value !== "") {
-      getResult(search.value, units.value, language.value);
+      getResult(search.value, units, language);
     } else {
       document.querySelector(".validName").style.opacity = "0.6";
       setTimeout(() => {
@@ -39,21 +44,21 @@ function displayResults(weather) {
       document.querySelector(".validName").style.opacity = "0";
     }, 3000);
   } else {
-    let city = document.querySelector(".location .city");
-    city.innerText = `${weather.name}, ${weather.sys.country}`;
+    let city = document.querySelector(".city");
+    city.innerText = `${weather.name}`;
 
-    let now = new Date();
-    let date = document.querySelector(".location .date");
-    date.innerText = dateBuilder(now);
+    // let now = new Date();
+    // let date = document.querySelector(".date");
+    // date.innerText = dateBuilder(now);
 
-    let temp = document.querySelector(".current .temp");
+    let temp = document.querySelector(".temp");
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>${
-      units.value === "metric" ? "°C" : "°F"
+      units === "metric" ? "°C" : "°F"
     }</span>`;
 
-    let weatherEl = document.querySelector(".current .weather");
+    let weatherEl = document.querySelector(".weather");
     weatherEl.innerText = `${
-      language.value === "mk"
+      language === "mk"
         ? `${
             weather.weather[0].main === "Clouds"
               ? "Облаци"
@@ -85,6 +90,10 @@ function displayResults(weather) {
           }`
         : weather.weather[0].main
     }`;
+    let humidity = document.querySelector(".humidity");
+    humidity.innerText = `${weather.main.humidity}%`;
+
+    let today = new Date();
 
     let icon = document.querySelector(".weatherIcon");
     icon.innerHTML = "";
@@ -94,7 +103,9 @@ function displayResults(weather) {
         : weather.weather[0].main === "Snow"
         ? snow
         : weather.weather[0].main === "Clear"
-        ? sun
+        ? today.getHours() > 7 && today.getHours() < 20
+          ? sun
+          : moon
         : weather.weather[0].main === ("Fog" || "Mist" || "Smoke" || "Dust")
         ? cloud
         : weather.weather[0].main === "Rain"
@@ -106,9 +117,9 @@ function displayResults(weather) {
 
     let hilow = document.querySelector(".hi-low");
     hilow.innerText = `${Math.round(weather.main.temp_min)}${
-      units.value === "metric" ? "°C" : "°F"
+      units === "metric" ? "°C" : "°F"
     } / ${Math.round(weather.main.temp_max)}${
-      units.value === "metric" ? "°C" : "°F"
+      units === "metric" ? "°C" : "°F"
     }`;
   }
 }
@@ -142,8 +153,30 @@ function dateBuilder(d) {
   let year = d.getFullYear();
   return `${day} ${date} ${month} ${year}`;
 }
-
-document.addEventListener(
-  "load",
-  getResult("Skopje", units.value, language.value)
-);
+btn.forEach((el) => {
+  el.addEventListener("click", () => {
+    if (el.classList.contains("active")) {
+      console.log("as");
+    } else {
+      let active = document.querySelector(".active");
+      active.classList.remove("active");
+      el.classList.add("active");
+    }
+    units = el.value;
+    console.log(el.value);
+  });
+});
+input.forEach((el) => {
+  el.addEventListener("click", () => {
+    if (el.classList.contains("active1")) {
+      let activeBtn = document.querySelector(".active1");
+      console.log(activeBtn);
+    } else {
+      let activeBtn = document.querySelector(".active1");
+      activeBtn.classList.remove("active1");
+      el.classList.add("active1");
+    }
+    language = el.value;
+  });
+});
+document.addEventListener("load", getResult("Skopje", units, language));

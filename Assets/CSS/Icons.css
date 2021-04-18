@@ -20,11 +20,19 @@
 }
 
 .white {
-  fill: #ffffff;
+  fill: rgb(137, 211, 197);
 }
 .gray {
-  fill: #e0e0e0;
+  fill: rgb(239, 239, 239);
 }
 .yellow {
   fill: #ffeb3b;
+}
+.moon {
+  /*   border:1px solid red; */
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 20px 10px 0px 0px rgb(137, 211, 197);
 }

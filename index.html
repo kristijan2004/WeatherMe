@@ -10,41 +10,45 @@
   </head>
   <body>
     <div class="wrapper">
+      <main>
+        <div class="selector">
+          <button value="metric" class="btn active">C</button>
+          <button value="imperial" class="btn">F</button>
+          <div class="weatherIcon"></div>
+        </div>
+        <section class="location">
+          <div class="cityInfo">
+            <div class="city"></div>
+            <div class="weather"></div>
+          </div>
+          <div class="tempInfo">
+            <div class="temp"><span></span></div>
+          </div>
+        </section>
+        <div class="current">
+          <!-- <div class="date"></div> -->
+          <div class="hi-low"></div>
+          <div class="humidity"></div>
+        </div>
+      </main>
       <header>
-        <p class="validName">Please enter valid city name</p>
+        <div id="language">
+          <button value="en" class="langBtn active1">English</button>
+          <button value="mk" class="langBtn">Македонски</button>
+        </div>
         <input
           type="text"
           class="search"
           placeholder="Search for a city..."
           autocomplete="off"
         />
-        <div class="selector">
-          <select id="units">
-            <option value="metric">Metric</option>
-            <option value="imperial">Imperial</option>
-          </select>
-          <select id="language">
-            <option value="en">English</option>
-            <option value="mk">Македонски</option>
-          </select>
-        </div>
+        <p class="validName">Please enter valid city name</p>
       </header>
-      <main>
-        <section class="location">
-          <div class="city"></div>
-          <div class="date"></div>
-        </section>
-        <div class="current">
-          <div class="temp"><span></span></div>
-          <div class="weatherIcon"></div>
-          <div class="weather"></div>
-          <div class="hi-low"></div>
-        </div>
-      </main>
     </div>
     <!-- ----------------------------WEATHER ICONS------------------------------- -->
     <div class="container">
       <div class="elements">
+        <div class="moon element"></div>
         <div class="element cloud">
           <svg
             version="1.1"
