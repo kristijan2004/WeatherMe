@@ -1,7 +1,5 @@
 let search = document.querySelector(".search");
-// const units = document.getElementById("units");
 let units = "metric";
-// const language = document.getElementById("language");
 let language = "en";
 let btn = document.querySelectorAll(".btn");
 let input = document.querySelectorAll(".langBtn");
@@ -94,6 +92,13 @@ function displayResults(weather) {
     humidity.innerText = `${weather.main.humidity}%`;
 
     let today = new Date();
+    let timezone = weather.timezone / 60 / 60;
+    let hours = today.getHours() - 2;
+    let currentCityTime = hours + timezone;
+    if (currentCityTime > 23) {
+      let newTime = currentCityTime - 24;
+      currentCityTime = newTime;
+    }
 
     let icon = document.querySelector(".weatherIcon");
     icon.innerHTML = "";
@@ -103,7 +108,7 @@ function displayResults(weather) {
         : weather.weather[0].main === "Snow"
         ? snow
         : weather.weather[0].main === "Clear"
-        ? today.getHours() > 7 && today.getHours() < 20
+        ? currentCityTime > 7 && currentCityTime < 20
           ? sun
           : moon
         : weather.weather[0].main === ("Fog" || "Mist" || "Smoke" || "Dust")
@@ -163,7 +168,7 @@ btn.forEach((el) => {
       el.classList.add("active");
     }
     units = el.value;
-    console.log(el.value);
+    getResult(document.querySelector(".city").innerText, units, language);
   });
 });
 input.forEach((el) => {
@@ -177,6 +182,7 @@ input.forEach((el) => {
       el.classList.add("active1");
     }
     language = el.value;
+    getResult(document.querySelector(".city").innerText, units, language);
   });
 });
 document.addEventListener("load", getResult("Skopje", units, language));
