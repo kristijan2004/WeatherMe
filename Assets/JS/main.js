@@ -11,6 +11,8 @@ let sun = document.querySelector(".sun");
 let cloud = document.querySelector(".cloud");
 let moon = document.querySelector(".moon");
 
+let icon = document.querySelector(".weatherIcon");
+
 search.addEventListener("keypress", findCity);
 
 function findCity(e) {
@@ -185,4 +187,5 @@ input.forEach((el) => {
     getResult(document.querySelector(".city").innerText, units, language);
   });
 });
+
 document.addEventListener("load", getResult("Skopje", units, language));

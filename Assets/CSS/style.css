@@ -138,8 +138,9 @@ main {
   position: absolute;
   display: flex;
   justify-content: center;
-  top: -30%;
+  top: -50%;
   left: 0%;
+  animation: circle 6s linear infinite;
 }
 .btn {
   border-radius: 50%;
@@ -170,15 +171,25 @@ main {
   border-bottom: 1px solid rgb(137, 211, 197);
   padding-bottom: 2px;
 }
-
-/* input[type="radio"] {
-  -webkit-appearance: none;
+@keyframes circle {
+  0% {
+    transform: rotate(0deg) translate(-15px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(-15px) rotate(-360deg);
+  }
 }
-input[type="radio"]::before {
-  content: "";
-  border-radius: 50%;
-  background-color: red;
-  display: block;
-  width: 10px;
-  height: 10px;
-} */
+
+@media (min-width: 320px) and (max-width: 425px) {
+  main {
+    min-width: 100%;
+    padding: 25px 10px 25px;
+  }
+  .current,
+  .location {
+    padding: 0px 30px;
+  }
+  .weatherIcon {
+    top: -80%;
+  }
+}
