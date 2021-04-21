@@ -184,6 +184,11 @@ input.forEach((el) => {
       el.classList.add("active1");
     }
     language = el.value;
+    if (language === "en") {
+      search.setAttribute("placeholder", "Search for a city...");
+    } else {
+      search.setAttribute("placeholder", "Пребарај град...");
+    }
     getResult(document.querySelector(".city").innerText, units, language);
   });
 });

@@ -179,6 +179,14 @@ main {
     transform: rotate(360deg) translate(-15px) rotate(-360deg);
   }
 }
+@keyframes circleSmall {
+  0% {
+    transform: rotate(0deg) translate(-10px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(-10px) rotate(-360deg);
+  }
+}
 
 @media (min-width: 320px) and (max-width: 425px) {
   main {
@@ -191,5 +199,6 @@ main {
   }
   .weatherIcon {
     top: -80%;
+    animation: circleSmall 6s linear infinite;
   }
 }
