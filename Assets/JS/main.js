@@ -198,6 +198,13 @@ input.forEach((el) => {
 });
 document.addEventListener("load", getResult("Skopje", units, language));
 
+document.querySelector(".sevenDays").addEventListener("click", function () {
+  location.hash = "sevenDays";
+});
+document.querySelector(".oneDay").addEventListener("click", function () {
+  location.hash = "";
+});
+
 // -----------------------------------7 DAYS------------------------------------------
 
 // function getResultByLonLat(lat, lon) {
