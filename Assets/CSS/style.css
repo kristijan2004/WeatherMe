@@ -72,7 +72,7 @@ main {
   justify-content: space-between;
   width: 100%;
   padding: 0px 60px 0px 100px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .current {
   display: flex;
@@ -139,7 +139,7 @@ main {
   display: flex;
   justify-content: center;
   top: -50%;
-  left: 0%;
+  left: -4%;
   animation: circle 6s linear infinite;
 }
 .btn {
@@ -171,20 +171,45 @@ main {
   border-bottom: 1px solid rgb(137, 211, 197);
   padding-bottom: 2px;
 }
+.date {
+  color: rgb(110, 110, 110);
+  font-size: 18px;
+}
+.date::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f073";
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  margin-left: -10px;
+  color: rgb(137, 211, 197);
+}
+.dailyWrapper {
+  display: flex;
+  justify-content: space-around;
+  min-height: 100vh;
+}
+.dailyDiv {
+  width: 150px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
+  height: 200px;
+}
 @keyframes circle {
   0% {
-    transform: rotate(0deg) translate(-15px) rotate(0deg);
+    transform: rotate(0deg) translate(-4px) rotate(0deg);
   }
   100% {
-    transform: rotate(360deg) translate(-15px) rotate(-360deg);
+    transform: rotate(360deg) translate(-4px) rotate(-360deg);
   }
 }
 @keyframes circleSmall {
   0% {
-    transform: rotate(0deg) translate(-10px) rotate(0deg);
+    transform: rotate(0deg) translate(-2px) rotate(0deg);
   }
   100% {
-    transform: rotate(360deg) translate(-10px) rotate(-360deg);
+    transform: rotate(360deg) translate(-2px) rotate(-360deg);
   }
 }
 

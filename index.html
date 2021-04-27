@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
     <link rel="stylesheet" href="./Assets/CSS/Icons.css" />
+    <link rel="icon" href="./Assets/Images/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/v4-shims.css"
+    />
     <title>WeatherMe</title>
   </head>
   <body>
     <div class="wrapper">
+      <a href="./sevenDays.html">Next</a>
       <main>
         <div class="selector">
           <button value="metric" class="btn active">C</button>
@@ -26,9 +36,11 @@
           </div>
         </section>
         <div class="current">
-          <!-- <div class="date"></div> -->
           <div class="hi-low"></div>
           <div class="humidity"></div>
+        </div>
+        <div class="current">
+          <p class="date"></p>
         </div>
       </main>
       <header>
@@ -45,6 +57,7 @@
         <p class="validName">Please enter valid city name</p>
       </header>
     </div>
+    <!-- <div class="dailyWrapper"></div> -->
     <!-- ----------------------------WEATHER ICONS------------------------------- -->
     <div class="container">
       <div class="elements">

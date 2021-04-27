@@ -4,6 +4,9 @@ let language = "en";
 let btn = document.querySelectorAll(".btn");
 let input = document.querySelectorAll(".langBtn");
 
+let longitude;
+let latitude;
+
 let snow = document.querySelector(".snow");
 let thunder = document.querySelector(".thunder");
 let rain = document.querySelector(".rain");
@@ -27,6 +30,7 @@ function findCity(e) {
     }
   }
 }
+
 function getResult(city, units, language) {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&lang=${language}&appid=e62e773b5d92a033441d23a6b615c185`
@@ -47,9 +51,9 @@ function displayResults(weather) {
     let city = document.querySelector(".city");
     city.innerText = `${weather.name}`;
 
-    // let now = new Date();
-    // let date = document.querySelector(".date");
-    // date.innerText = dateBuilder(now);
+    let now = new Date();
+    let date = document.querySelector(".date");
+    date.innerText = dateBuilder(now);
 
     let temp = document.querySelector(".temp");
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>${
@@ -158,7 +162,7 @@ function dateBuilder(d) {
   let date = d.getDate();
   let month = months[d.getMonth()];
   let year = d.getFullYear();
-  return `${day} ${date} ${month} ${year}`;
+  return `${day}, ${date} ${month} ${year}`;
 }
 btn.forEach((el) => {
   el.addEventListener("click", () => {
@@ -192,5 +196,66 @@ input.forEach((el) => {
     getResult(document.querySelector(".city").innerText, units, language);
   });
 });
-
 document.addEventListener("load", getResult("Skopje", units, language));
+
+// -----------------------------------7 DAYS------------------------------------------
+
+// function getResultByLonLat(lat, lon) {
+//   fetch(
+//     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=hourly,current,minutely,alerts
+//       &appid=e62e773b5d92a033441d23a6b615c185`
+//   )
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then(displayResultsByLonLat);
+// }
+// function findLocation(position) {
+//   longitude = position.coords.longitude;
+//   latitude = position.coords.latitude;
+// getResultByLonLat(position.coords.latitude, position.coords.longitude);
+// }
+// navigator.geolocation.getCurrentPosition(findLocation);
+// function dailyDiv(day1, temp1, min1, humidity1) {
+//   let wrapper = document.querySelector(".dailyWrapper");
+//   let div = document.createElement("div");
+//   let day = document.createElement("h4");
+//   let temp = document.createElement("p");
+//   let minMax = document.createElement("p");
+//   let humidity = document.createElement("p");
+//   div.classList.add("dailyDiv");
+//   day.classList.add("dailyDay");
+//   minMax.classList.add("dailyMinMax");
+//   humidity.classList.add("dailyHumidity");
+//   temp.classList.add("dailyTemp");
+//   wrapper.appendChild(div);
+//   div.appendChild(day);
+//   div.appendChild(temp);
+//   div.appendChild(minMax);
+//   div.appendChild(humidity);
+//   day.innerText = day1;
+//   temp.innerText = temp1;
+//   minMax.innerText = min1;
+//   humidity.innerText = humidity1;
+//   return div;
+// }
+// function displayResultsByLonLat(weather) {
+//   console.log(weather);
+//   if ((longitude, latitude)) {
+//     for (let i = 1; i <= 7; i++) {
+//       dailyDiv(
+//         "DAY DAY",
+//         Math.round(weather.daily[i].feels_like.day),
+//         Math.round(weather.daily[i].temp.min),
+//         weather.daily[i].humidity
+//       );
+//       // day.innerText = "DAY DAY";
+//       // temp.innerText = Math.round(weather.daily[i].feels_like.day);
+//       // minMax.innerText = `${Math.round(
+//       //   weather.daily[i].temp.min
+//       // )} / ${Math.round(weather.daily[i].temp.max)}`;
+//       // humidity.innerText = `${weather.daily[i].humidity}%`;
+//       // div.innerText = el.temp.day;
+//     }
+//   }
+// }
