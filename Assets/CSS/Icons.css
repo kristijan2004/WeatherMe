@@ -3,6 +3,16 @@
   width: 90px;
   margin: 10px;
 }
+@media (min-width: 320px) and (max-width: 425px) {
+  .moon {
+    height: 40px !important;
+    width: 40px !important;
+  }
+  .element {
+    height: 60px;
+    width: 60px;
+  }
+}
 
 .container {
   display: none;

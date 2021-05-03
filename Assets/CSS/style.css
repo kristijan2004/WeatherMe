@@ -82,7 +82,7 @@ main {
   font-size: 18px;
 }
 .hi-low {
-  margin-right: 50px;
+  margin-right: 25px;
   color: rgb(110, 110, 110);
   display: flex;
   align-items: center;
@@ -100,6 +100,7 @@ main {
   color: rgb(110, 110, 110);
   display: flex;
   align-items: center;
+  margin-right: 25px;
 }
 .humidity::before {
   background-image: url("https://i.postimg.cc/k4LVQyBL/humi.png");
@@ -107,6 +108,22 @@ main {
   width: 35px;
   height: 35px;
   margin-left: -10px;
+  content: "";
+  display: inline-block;
+}
+.wind {
+  color: rgb(110, 110, 110);
+  display: flex;
+  align-items: center;
+}
+.wind::before {
+  background-image: url("../Images/wind-speed.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
   content: "";
   display: inline-block;
 }
@@ -196,6 +213,9 @@ main {
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
   height: 200px;
 }
+.mobile {
+  display: none;
+}
 @keyframes circle {
   0% {
     transform: rotate(0deg) translate(-4px) rotate(0deg);
@@ -220,10 +240,25 @@ main {
   }
   .current,
   .location {
-    padding: 0px 30px;
+    padding: 0px 10px;
   }
   .weatherIcon {
     top: -80%;
     animation: circleSmall 6s linear infinite;
+    left: 0%;
+  }
+  .mobile {
+    display: flex !important;
+    align-self: flex-start;
+  }
+  .wind {
+    display: none;
+  }
+  .wind::before {
+    align-self: flex-start;
+    margin-top: -4px;
+  }
+  .current {
+    justify-content: space-between;
   }
 }

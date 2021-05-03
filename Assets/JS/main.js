@@ -97,6 +97,11 @@ function displayResults(weather) {
     let humidity = document.querySelector(".humidity");
     humidity.innerText = `${weather.main.humidity}%`;
 
+    let wind = document.querySelectorAll(".wind");
+    wind.forEach((el) => {
+      el.innerText = `${weather.wind.speed} km/H`;
+    });
+
     let today = new Date();
     let timezone = weather.timezone / 60 / 60;
     let hours = today.getHours() - 2;
@@ -133,6 +138,7 @@ function displayResults(weather) {
       units === "metric" ? "°C" : "°F"
     }`;
   }
+  search.value = "";
 }
 function dateBuilder(d) {
   let months = [
@@ -162,7 +168,7 @@ function dateBuilder(d) {
   let date = d.getDate();
   let month = months[d.getMonth()];
   let year = d.getFullYear();
-  return `${day}, ${date} ${month} ${year}`;
+  return `${day}, ${date} ${month}`;
 }
 btn.forEach((el) => {
   el.addEventListener("click", () => {
@@ -197,13 +203,6 @@ input.forEach((el) => {
   });
 });
 document.addEventListener("load", getResult("Skopje", units, language));
-
-document.querySelector(".sevenDays").addEventListener("click", function () {
-  location.hash = "sevenDays";
-});
-document.querySelector(".oneDay").addEventListener("click", function () {
-  location.hash = "";
-});
 
 // -----------------------------------7 DAYS------------------------------------------
 
