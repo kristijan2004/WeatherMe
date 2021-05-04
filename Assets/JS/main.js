@@ -23,6 +23,15 @@ function findCity(e) {
     if (search.value !== "") {
       getResult(search.value, units, language);
     } else {
+      if (language === "en") {
+        document.querySelector(".validName").innerText =
+          "Please enter a valid city name...";
+      } else {
+        document.querySelector(".validName").innerText =
+          "Ве молиме внесете валидно име на град...";
+      }
+
+      ("Please enter a valid city name");
       document.querySelector(".validName").style.opacity = "0.6";
       setTimeout(() => {
         document.querySelector(".validName").style.opacity = "0";
@@ -168,7 +177,17 @@ function dateBuilder(d) {
   let date = d.getDate();
   let month = months[d.getMonth()];
   let year = d.getFullYear();
-  return `${day}, ${date} ${month}`;
+  let ordinalNumber;
+  if (date === 1 || date === 21) {
+    ordinalNumber = "st";
+  } else if (date === 2 || date === 22) {
+    ordinalNumber = "nd";
+  } else if (date === 3 || date === 23) {
+    ordinalNumber = "rd";
+  } else {
+    ordinalNumber = "th";
+  }
+  return `${day}, ${date}${ordinalNumber} of ${month}`;
 }
 btn.forEach((el) => {
   el.addEventListener("click", () => {

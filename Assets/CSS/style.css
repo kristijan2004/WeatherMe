@@ -18,6 +18,7 @@ body {
   min-height: 100vh;
 }
 header {
+  width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +36,7 @@ header {
   padding: 10px 15px !important;
 } */
 header .search {
-  width: 100%;
+  width: 80%;
   max-width: 280px;
   padding: 10px 15px;
   border: none;
@@ -170,7 +171,7 @@ main {
   color: #fff !important;
 }
 #language {
-  width: 100%;
+  width: 80%;
   color: gray;
   display: flex;
   justify-content: space-around;
