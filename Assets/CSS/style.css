@@ -236,8 +236,8 @@ main {
 
 @media (min-width: 320px) and (max-width: 425px) {
   main {
-    min-width: 100%;
-    padding: 25px 10px 25px;
+    min-width: 94%;
+    padding: 25px 3px 25px;
   }
   .current,
   .location {
@@ -254,12 +254,31 @@ main {
   }
   .wind {
     display: none;
+    align-items: unset;
   }
   .wind::before {
     align-self: flex-start;
     margin-top: -4px;
+    margin-right: 5px;
+    width: 30px;
+    height: 32px;
   }
   .current {
     justify-content: space-between;
+  }
+  header {
+    width: 320px;
+  }
+  .validName {
+    font-size: 14px;
+  }
+  .date,
+  .wind {
+    font-size: 16px;
+  }
+}
+@media (min-width: 425px) and (max-width: 575px) {
+  .current {
+    padding: 0px 60px 0px 33px;
   }
 }
