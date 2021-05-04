@@ -108,7 +108,11 @@ function displayResults(weather) {
 
     let wind = document.querySelectorAll(".wind");
     wind.forEach((el) => {
-      el.innerText = `${weather.wind.speed} km/H`;
+      if (units === "metric") {
+        el.innerText = `${weather.wind.speed} km/H`;
+      } else {
+        el.innerText = `${weather.wind.speed} mph`;
+      }
     });
 
     let today = new Date();
