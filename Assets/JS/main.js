@@ -7,6 +7,8 @@ let input = document.querySelectorAll(".langBtn");
 let longitude;
 let latitude;
 
+let currentWeather;
+
 let snow = document.querySelector(".snow");
 let thunder = document.querySelector(".thunder");
 let rain = document.querySelector(".rain");
@@ -31,7 +33,6 @@ function findCity(e) {
           "Ве молиме внесете валидно име на град...";
       }
 
-      ("Please enter a valid city name");
       document.querySelector(".validName").style.opacity = "0.6";
       setTimeout(() => {
         document.querySelector(".validName").style.opacity = "0";
@@ -52,6 +53,19 @@ function getResult(city, units, language) {
 function displayResults(weather) {
   console.log(weather);
   if (weather.cod === "404") {
+    if (language === "en") {
+      document.querySelector(".validName").innerText = "City not found...";
+    } else {
+      document.querySelector(".validName").innerText =
+        "Градот не е пронајден...";
+    }
+
+    document.querySelector(".validName").style.opacity = "0.6";
+    setTimeout(() => {
+      document.querySelector(".validName").style.opacity = "0";
+    }, 3000);
+  }
+  if (weather.cod === "404") {
     document.querySelector(".validName").style.opacity = "0.6";
     setTimeout(() => {
       document.querySelector(".validName").style.opacity = "0";
@@ -62,8 +76,11 @@ function displayResults(weather) {
 
     let now = new Date();
     let date = document.querySelector(".date");
-    date.innerText = dateBuilder(now);
-
+    if (language === "en") {
+      date.innerText = dateBuilder(now);
+    } else {
+      date.innerText = dateBuilderMk(now);
+    }
     let temp = document.querySelector(".temp");
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>${
       units === "metric" ? "°C" : "°F"
@@ -109,9 +126,17 @@ function displayResults(weather) {
     let wind = document.querySelectorAll(".wind");
     wind.forEach((el) => {
       if (units === "metric") {
-        el.innerText = `${weather.wind.speed} km/H`;
+        if (language === "en") {
+          el.innerText = `${weather.wind.speed} km/H`;
+        } else {
+          el.innerText = `${weather.wind.speed} км/ч`;
+        }
       } else {
-        el.innerText = `${weather.wind.speed} mph`;
+        if (language === "en") {
+          el.innerText = `${weather.wind.speed} mph`;
+        } else {
+          el.innerText = `${weather.wind.speed} м/ч`;
+        }
       }
     });
 
@@ -180,7 +205,7 @@ function dateBuilder(d) {
   let day = days[d.getDay()];
   let date = d.getDate();
   let month = months[d.getMonth()];
-  let year = d.getFullYear();
+  // let year = d.getFullYear();
   let ordinalNumber;
   if (date === 1 || date === 21) {
     ordinalNumber = "st";
@@ -192,6 +217,44 @@ function dateBuilder(d) {
     ordinalNumber = "th";
   }
   return `${day}, ${date}${ordinalNumber} of ${month}`;
+}
+function dateBuilderMk(d) {
+  let months = [
+    "Јануари",
+    "Февруари",
+    "Март",
+    "Април",
+    "Мај",
+    "Јуни",
+    "Јули",
+    "Август",
+    "Септември",
+    "Октомври",
+    "Ноември",
+    "Декември",
+  ];
+  let days = [
+    "Недела",
+    "Понеделник",
+    "Вторник",
+    "Среда",
+    "Четврток",
+    "Петок",
+    "Сабота",
+  ];
+  let day = days[d.getDay()];
+  let date = d.getDate();
+  let month = months[d.getMonth()];
+  // let year = d.getFullYear();
+  let ordinalNumber;
+  if (date === 1 || date === 21) {
+    ordinalNumber = "ви";
+  } else if (date === 2 || date === 22) {
+    ordinalNumber = "ри";
+  } else {
+    ordinalNumber = "ти";
+  }
+  return `${day}, ${date}${ordinalNumber} ${month}`;
 }
 btn.forEach((el) => {
   el.addEventListener("click", () => {
