@@ -40,7 +40,6 @@ function findCity(e) {
     }
   }
 }
-
 function getResult(city, units, language) {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&lang=${language}&appid=e62e773b5d92a033441d23a6b615c185`
