@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "montserrat", sans-serif;
+  font-family: 'montserrat', sans-serif;
   background-color: rgb(255, 254, 244);
   background-size: cover;
   background-position: top center;
@@ -66,7 +66,7 @@ main {
   min-width: 570px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 30%);
 }
 .location {
   display: flex;
@@ -89,9 +89,9 @@ main {
   align-items: center;
 }
 .hi-low::before {
-  content: "";
+  content: '';
   display: inline-block;
-  background-image: url("https://i.postimg.cc/Dzj4ZhFv/temp.png");
+  background-image: url('https://i.postimg.cc/Dzj4ZhFv/temp.png');
   background-size: contain;
   width: 35px;
   height: 35px;
@@ -104,12 +104,12 @@ main {
   margin-right: 25px;
 }
 .humidity::before {
-  background-image: url("https://i.postimg.cc/k4LVQyBL/humi.png");
+  background-image: url('https://i.postimg.cc/k4LVQyBL/humi.png');
   background-size: contain;
   width: 35px;
   height: 35px;
   margin-left: -10px;
-  content: "";
+  content: '';
   display: inline-block;
 }
 .wind {
@@ -118,14 +118,14 @@ main {
   align-items: center;
 }
 .wind::before {
-  background-image: url("../Images/wind-speed.png");
+  background-image: url('../Images/wind-speed.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 35px;
   height: 35px;
   margin-right: 10px;
-  content: "";
+  content: '';
   display: inline-block;
 }
 .location .cityInfo {
@@ -194,8 +194,8 @@ main {
   font-size: 18px;
 }
 .date::before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f073";
+  font-family: 'Font Awesome 5 Free';
+  content: '\f073';
   display: inline-block;
   width: 35px;
   height: 35px;
